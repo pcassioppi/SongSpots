@@ -9,7 +9,3 @@ class Song(models.Model):
     longitude = models.CharField(max_length=100, null=True)
     date = models.DateField(null=True)
     tagged_by = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, on_delete=models.CASCADE)
-
-# class SongList(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     song = models.ForeignKey('songs.Song', related_name='SongList', on_delete=models.CASCADE)
