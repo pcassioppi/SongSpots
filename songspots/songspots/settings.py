@@ -81,11 +81,11 @@ WSGI_APPLICATION = 'songspots.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'SongSpots',
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': 'testdb.cqkvg3uj1j8v.us-east-2.rds.amazonaws.com',
-        'PORT': '5432',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
