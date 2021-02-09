@@ -1,0 +1,3 @@
+[submodule "songspots-react"]
+	path = songspots-react
+	url = https://github.com/pcassioppi/SongSpots-React
