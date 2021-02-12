@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'SongSpots',
         'USER': 'postgres',
-        'PASSWORD': 'password',
+        'PASSWORD': 'newpassword',
         'HOST': 'testdb.cqkvg3uj1j8v.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }

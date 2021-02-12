@@ -1,5 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
+from django.db.models import Q
 
 from .models import Song
 from users.schema import UserType
@@ -13,25 +14,34 @@ class SongType(DjangoObjectType):
 #         model = SongList
 
 class Query(graphene.ObjectType):
-    songs = graphene.List(SongType, search=graphene.String(),
+    songs = graphene.List(SongType, search=graphene.String(), userSearch=graphene.String(),
      first=graphene.Int(),
      skip=graphene.Int(),
      )
     # votes = graphene.List(VoteType)
 
-    def resolve_songs(self,info,search=None,first=None, skip=None, **kwargs):
+    def resolve_songs(self,info,search=None,first=None, skip=None, userSearch=None, **kwargs):
         #retrieving all the links to paginate them
         all_songs = Song.objects.all()
-
+        user = info.context.user
         #if there is a search parameter, run this, else it will just return unfiltered links
         if search:
             filter = (
                 Q(title__icontains=search) |
-                Q(artist__icontains=search) 
+                Q(artist__icontains=search) |
+                Q(tagged_by__username__icontains=search)
                 #should date be added in here??....
 
             )
             all_songs = all_songs.filter(filter)
+
+        all_songs = all_songs.filter(Q(tagged_by__username=user.username))
+
+        # if userSearch:
+        #     filter = (
+        #         Q(tagged_by__username__icontains=userSearch)
+        #     )
+        #     all_songs = all_songs.filter(filter)
 
         if skip:
             all_songs = all_songs[skip:]
@@ -50,7 +60,8 @@ class CreateSong(graphene.Mutation):
     artist = graphene.String()
     latitude = graphene.String()
     longitude = graphene.String()
-    date = graphene.Date()
+    date = graphene.String()
+    description = graphene.String()
     tagged_by = graphene.Field(UserType)
 
    
@@ -59,13 +70,15 @@ class CreateSong(graphene.Mutation):
         artist = graphene.String()
         latitude = graphene.String()
         longitude = graphene.String()
-        date = graphene.Date()
+        date = graphene.String()
+        description = graphene.String()
 
     
-    def mutate(self, info, title, artist, latitude, longitude, date):
-        user = info.context.user or None
+    def mutate(self, info, title, artist, latitude, longitude, date, description):
+        user = info.context.user
 
-        song = Song(title = title, artist=artist, latitude=latitude, longitude=longitude, date=date, tagged_by=user)
+        song = Song(title = title, artist=artist, latitude=latitude, longitude=longitude, date=date,
+         description=description, tagged_by=user)
         song.save()
 
         return CreateSong(
@@ -75,6 +88,7 @@ class CreateSong(graphene.Mutation):
             latitude=song.latitude,
             longitude=song.longitude,
             date=song.date,
+            description=song.description,
             tagged_by=song.tagged_by,
         )
 
