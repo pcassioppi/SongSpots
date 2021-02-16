@@ -34,9 +34,9 @@ A key part of this project was the ability to pinpoint on a map where the user h
 
 
 ## TODO:
-Change/add Homepage so users don't log in to a blank page
-Add pagination or scrolling to list on side of user map
-Alter Date formatting, make it uniform -> then use those dates to allow users to sort by date
-Highlight song on list when user hovers it on map
-Improve general looks
-Spotify functionality? Maybe add the ability to submit a spotify link that can be played?
+- Change/add Homepage so users don't log in to a blank page
+- Add pagination or scrolling to list on side of user map
+- Alter Date formatting, make it uniform -> then use those dates to allow users to sort by date
+- Highlight song on list when user hovers it on map
+- Improve general looks
+- Spotify functionality? Maybe add the ability to submit a spotify link that can be played?
