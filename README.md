@@ -20,9 +20,23 @@ I chose to use a relational database for this program because there was no need 
 
 ### Backend: Django, GraphQL, JWT Authentication
 
-GraphQL is pretty rad. Since I've already made a couple of REST APIs in my programming days, I wanted to expand my knowledge, and see what other type of APIs were out there. This naturally led me to GraphQL, which I had heard about before but I hadn't *really* looked at it. Once I did, I said, "Holy cow. This is sweet!". Having the data available, at a single endpoint, to be queried makes the API much mkore efficient, as there is not any unnecessary data fetched, and it also results in less requests having to be sent. For the frontend, it makes things a ton easier, as the queries are more adaptable and can be made to perfectly suit the needs of the frontend, getting exactly the data needed with one request. I think GraphQL will be my go to API now instead of REST.
+GraphQL is pretty rad. Since I've already made a couple of REST APIs in my programming days (Django/Spring Boot), I wanted to expand my knowledge, and see what other type of APIs were out there. This naturally led me to GraphQL, which I had heard about before but I hadn't *really* looked at it. Once I did, I said, "Holy cow. This is sweet!". Having the data available, at a single endpoint, to be queried makes the API much mkore efficient, as there is not any unnecessary data fetched, and it also results in less requests having to be sent. For the frontend, it makes things a ton easier, as the queries are more adaptable and can be made to perfectly suit the needs of the frontend, getting exactly the data needed with one request. I think GraphQL will be my go to API now instead of REST.
 
 I used Django and the Graphene library to create the API, since I already had experience with Django. This made it easier to learn and implement a GraphQL API, as everything else was mostly familiar to me. Django also has a very robust User model with authentication, and I wanted to get some experience usiing it to create an application that uses JWT authentication. 
 
-### Frontend: React, GraphQL, Google Maps, JWT Authentication
+### Frontend: React, urql, JWT Authentication, Google Maps API
 
+For the fronted of the application I chose to use React, since it offers a great way to create a dynamic webpage with multiple parts. I also have experience with it, so it made it easier to work with and learn GraphQl as I made the project. To query the data from the GraphQL API, I used the urql library. Urql makes it very easy to query data, and send mutations to the API. Doing the frontend, I saw some of the of the advantages of GraphQL, which make queries very adaptable and efficient. The way I was able to query exactly the data I needed, in the format I needed, from one endpoint, was excellent.
+
+This project required the use of JSOn Web Tokens for authentication, since I wanted to be able to show users their specific data. When the data requests were sent, the users token was sent as a header, and the API returned only that users data, or would return the sent data with a relation to mark the user that submitted it.
+
+A key part of this project was the ability to pinpoint on a map where the user had listened to the song they are logging. To achieve this, I implemented the Google Maps Javascript API, which allows for many (awesome) customizations by the user. The power to have a satellite map in a project is good enough, but the ability to work with the map as a developer really impressed me. The users can see markers where there songs are logged (saved using latitude/longitude), and can interact with the map fully. The users can also click on the map to log the coordinates of the click, which are then sent to the API with the information of the song they are recording, allowing for precise  locations.
+
+
+## TODO:
+Change/add Homepage so users don't log in to a blank page
+Add pagination or scrolling to list on side of user map
+Alter Date formatting, make it uniform -> then use those dates to allow users to sort by date
+Highlight song on list when user hovers it on map
+Improve general looks
+Spotify functionality? Maybe add the ability to submit a spotify link that can be played?
