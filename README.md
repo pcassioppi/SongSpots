@@ -12,7 +12,7 @@ The application allows a user to create a profile and login. After that, they ca
 
 ## The Deets (Technical Details)
 
-The app was made using an AWS RDS Postgres database instance that was made accessible through a Django API using GraphQL to query the data. The frontend was made using React to display the queried data, along with the Google Maps API component. The application security was done using Django/GraphQL JWT authentication.
+The app was made using an AWS RDS Postgres database instance that was made accessible through a Django API using GraphQL to query the data. The frontend was made using React to display the queried data, as well as display the Google Maps API component. The application security was done using Django/GraphQL JWT authentication.
 
 ### Database: AWS RDS PostgreSQL
 
@@ -30,7 +30,7 @@ For the fronted of the application I chose to use React, since it offers a great
 
 This project required the use of JSOn Web Tokens for authentication, since I wanted to be able to show users their specific data. When the data requests were sent, the users token was sent as a header, and the API returned only that users data, or would return the sent data with a relation to mark the user that submitted it.
 
-A key part of this project was the ability to pinpoint on a map where the user had listened to the song they are logging. To achieve this, I implemented the Google Maps Javascript API, which allows for many (awesome) customizations by the user. The power to have a satellite map in a project is good enough, but the ability to work with the map as a developer really impressed me. The users can see markers where there songs are logged (saved using latitude/longitude), and can interact with the map fully. The users can also click on the map to log the coordinates of the click, which are then sent to the API with the information of the song they are recording, allowing for precise  locations.
+A key part of this project was the ability to pinpoint on a map where the user had listened to the song they are logging. To achieve this, I used the Google Maps Javascript API, which allows for many (awesome) customizations by the user. The power to have a satellite map in a project is good enough, but the ability to work with the map as a developer really impressed me. The users can see markers where there songs are logged (saved using latitude/longitude), and can interact with the map fully. The users can also click on the map to log the coordinates of the click, which are then sent to the API with the information of the song they are recording, allowing for precise  locations.
 
 
 ## TODO:
