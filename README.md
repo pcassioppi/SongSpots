@@ -1,5 +1,7 @@
 # Welcome to my SongSpots project!
 
+### Song Location Tracker
+
 ## Why?
 
 This Web app was something I built because I wished something like it existed. I love listening to music, and when I listen to some songs, they take me back to a certain memory from my life. These memories are associated with the place I was in when they happened, so I wanted to be able to pinpoint the exact (or rough) location I was at when I heard a certain song, and I wanted to be able to describe the memory and what was so memorable about that song at that place and time.
